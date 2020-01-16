@@ -13,7 +13,8 @@ function createFeatures(earthquakeData) {
     function onEachFeature(feature, layer) {
 
         // Generate Informational Pop Up for Each Earthquake
-        layer.bindPopup("<h3>" + feature.properties.place + "</h3><hr><p>" + new Date(feature.properties.time) + "</p>")}
+        layer.bindPopup("<h3>" + feature.properties.mag + " - " + feature.properties.place + "</h3><hr><p>" + 
+            new Date(feature.properties.time) + "</p>")}
     
         // Define Variable for Earthquake Marker
         var earthquakes = L.geoJSON(earthquakeData, {
@@ -27,8 +28,8 @@ function createFeatures(earthquakeData) {
                     // Generate a Red Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag * 10,
-                        color: "red",
-                        fillcolor: "red", 
+                        color: "#EA2C2C",
+                        fillcolor: "#EA2C2C", 
                         fillOpacity: 1})}
 
                 // Set Condition for Earthquake Magnitude of 4+
@@ -37,8 +38,8 @@ function createFeatures(earthquakeData) {
                     // Generate a Orange Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag * 8,
-                        color: "orange", 
-                        fillcolor: "orange",
+                        color: "#EA822C", 
+                        fillcolor: "#EA822C",
                         fillOpacity: 0.8})}
                 
                 // Set Condition for Earthquake Magnitude of 3+
@@ -47,8 +48,8 @@ function createFeatures(earthquakeData) {
                     // Generate a Yellow Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag * 6,
-                        color: "yellow", 
-                        fillcolor: "yellow",
+                        color: "#EE9C00", 
+                        fillcolor: "#EE9C00",
                         fillOpacity: 0.6})}
 
                 // Set Condition for Earthquake Magnitude of 2+
@@ -57,8 +58,8 @@ function createFeatures(earthquakeData) {
                     // Generate a Green Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag * 4,
-                        color: "green", 
-                        fillcolor: "green",
+                        color: "#EECC00", 
+                        fillcolor: "#EECC00",
                         fillOpacity: 0.4})}
 
                 // Set Condition for Earthquake Magnitude of 1+
@@ -67,16 +68,16 @@ function createFeatures(earthquakeData) {
                     // Generate a Blue Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag * 2,
-                        color: "blue", 
-                        fillcolor: "blue",
+                        color: "#D4EE00", 
+                        fillcolor: "#D4EE00",
                         fillOpacity: 1})}
                 else {
 
                     // Generate a Gray Circle Marker
                     return new L.CircleMarker([earthquakeData.geometry.coordinates[1], earthquakeData.geometry.coordinates[0]], {
                         radius: earthquakeData.properties.mag,
-                        color: "gray", 
-                        fillcolor: "gray",
+                        color: "#98EE00", 
+                        fillcolor: "#98EE00",
                         fillOpacity: 0.2})}},
     
     // Call Function to Generate Individual Features
@@ -112,8 +113,8 @@ function createMap(earthquakes) {
         accessToken: ""});
 
     var baseMaps = {
-        "Satellite Map": satellitemap,
         "Outdoors Map": outdoorsmap,
+        "Satellite Map": satellitemap,
         "Dark Map": darkmap,
         "Light Map" : lightmap};
 
@@ -122,28 +123,21 @@ function createMap(earthquakes) {
     var myMap = L.map("map", {
         center: [37.09, -95.71],
         zoom: 5,
-        layers: [satellitemap, earthquakes]});
+        layers: [outdoorsmap, earthquakes]});
 
     L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(myMap);
-
-    function getColor(d) {
-        return d >= 5 ? 'red' :
-            d >= 4 ? 'orange' :
-            d >= 3 ? 'yellow' :
-            d >= 2 ? 'green' :
-            d >= 1 ? 'blue' :
-                     'gray';}
 
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function(myMap) {
         var div = L.DomUtil.create('div', 'info legend'),
         magnitude = ["0-1", "1-2", "2-3", "3-4", "4-5", "5+"],
-        labels = [];
+        color = ['#98EE00', '#D4EE00', '#EECC00', '#EE9C00', '#EA822C', '#EA2C2C'];
 
         for (var i = 0; i < magnitude.length; i++) {
-        div.innerHTML += '<i style="background:' + getColor(magnitude[i] + 1) + '"></i> ' +
-            magnitude[i] + (magnitude[i + 1] ? '&ndash;' + magnitude[i + 1] + '<br>' : '+')}
+            div.innerHTML += '<i style="background:' + color[i] + '"></i> ' + magnitude[i] + '<br>'
+        
+            console.log(color[i], magnitude[i])}
 
         return div};
 
