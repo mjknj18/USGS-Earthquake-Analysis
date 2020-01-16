@@ -12,6 +12,13 @@ function createFeatures(earthquakeData) {
   }
 
   var earthquakes = L.geoJSON(earthquakeData, {
+    pointToLayer: function(earthquakeData) {
+        return new L.CircleMarker([earthquakeData.geometry.coordinates[0], -1 * earthquakeData.geometry.coordinates[1]], {
+            radius: earthquakeData.properties.mag,
+            color: "red", 
+        	fillOpacity: 0.85
+        });
+    },
     onEachFeature: onEachFeature
   });
 
@@ -24,14 +31,14 @@ function createMap(earthquakes) {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
     id: "mapbox.streets",
-    accessToken: API_KEY
+    accessToken: ""
   });
 
   var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
     id: "mapbox.dark",
-    accessToken: API_KEY
+    accessToken: ""
   });
 
   var baseMaps = {
