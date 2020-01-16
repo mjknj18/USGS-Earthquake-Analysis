@@ -135,9 +135,7 @@ function createMap(earthquakes) {
         color = ['#98EE00', '#D4EE00', '#EECC00', '#EE9C00', '#EA822C', '#EA2C2C'];
 
         for (var i = 0; i < magnitude.length; i++) {
-            div.innerHTML += '<i style="background:' + color[i] + '"></i> ' + magnitude[i] + '<br>'
-        
-            console.log(color[i], magnitude[i])}
+            div.innerHTML += '<i style="background:' + color[i] + '"></i> ' + magnitude[i] + '<br>'}
 
         return div};
 
