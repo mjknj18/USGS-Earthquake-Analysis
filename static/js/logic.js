@@ -94,28 +94,28 @@ function createMap(earthquakes) {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.satellite",
-        accessToken: ""});
+        accessToken: "pk.eyJ1IjoibWprbmoxOCIsImEiOiJjazVlaDlqNm4wNHoxM2ZwYnhxY3A5dXhnIn0.KAhQiVsQFvYLRjLUkKC1OQ"});
 
     // Define Outdoors Map Layer
     var outdoorsmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.outdoors",
-        accessToken: ""});
+        accessToken: "pk.eyJ1IjoibWprbmoxOCIsImEiOiJjazVlaDlqNm4wNHoxM2ZwYnhxY3A5dXhnIn0.KAhQiVsQFvYLRjLUkKC1OQ"});
 
     // Define Dark Map Layer
     var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.dark",
-        accessToken: ""});
+        accessToken: "pk.eyJ1IjoibWprbmoxOCIsImEiOiJjazVlaDlqNm4wNHoxM2ZwYnhxY3A5dXhnIn0.KAhQiVsQFvYLRjLUkKC1OQ"});
 
     // Define Light Map Layer
     var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.light",
-        accessToken: ""});
+        accessToken: "pk.eyJ1IjoibWprbmoxOCIsImEiOiJjazVlaDlqNm4wNHoxM2ZwYnhxY3A5dXhnIn0.KAhQiVsQFvYLRjLUkKC1OQ"});
 
     // Define Array of Available Maps
     var baseMaps = {
