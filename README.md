@@ -15,10 +15,10 @@ The goal of this project was to use JavaScript to present an interactive map vis
 1. Import the GeoJSON data.
 2. Extract the location, magnitude, and timestamp of each earthquake event.
 3. For each earthquake event, create a pop-up box with the above information.
-4. For each earthquake event, create a circle marker whose size is proportional to the event's magnitude.
+4. For each earthquake event, create a circle marker whose size and color are proportional to the event's magnitude.
 5. Import four map layers (satellite, outdoors, dark, light) from the Mapbox API.
 6. Link the map layers, circle markers, and pop-up boxes together to create the interactive map.
-7. Create a legend for the circle markers and add it to the interactive map.
+7. Create a legend for the circle marker color scale and add it to the interactive map.
 
 ## Results
 
