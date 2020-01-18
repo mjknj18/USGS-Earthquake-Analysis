@@ -4,7 +4,7 @@ The goal of this project was to use JavaScript to present an interactive map vis
 
 ## Questions
 
-
+1. What are the magnitudes and locations of all earthquakes that have occurred in the last twenty-four hours?
 
 ## Datasets
 
