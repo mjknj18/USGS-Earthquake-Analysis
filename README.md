@@ -8,7 +8,7 @@ The goal of this project was to use JavaScript to present an interactive map vis
 
 ## Datasets
 
-
+1. https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
 
 ## Tasks
 
@@ -16,3 +16,4 @@ The goal of this project was to use JavaScript to present an interactive map vis
 
 ## Results
 
+1. https://github.com/mjknj18/USGS-Earthquake-Analysis/blob/master/index.html (Run this file in a browser.)
