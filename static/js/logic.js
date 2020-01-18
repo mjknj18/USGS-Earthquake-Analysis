@@ -88,47 +88,58 @@ function createFeatures(earthquakeData) {
 
 // Define Function to Create Earthquake Map
 function createMap(earthquakes) {
+
+    // Define Satellite Map Layer
     var satellitemap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.satellite",
         accessToken: ""});
 
+    // Define Outdoors Map Layer
     var outdoorsmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.outdoors",
         accessToken: ""});
 
+    // Define Dark Map Layer
     var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.dark",
         accessToken: ""});
 
+    // Define Light Map Layer
     var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.light",
         accessToken: ""});
 
+    // Define Array of Available Maps
     var baseMaps = {
         "Outdoors Map": outdoorsmap,
         "Satellite Map": satellitemap,
         "Dark Map": darkmap,
         "Light Map" : lightmap};
 
+    // Define Data Layer
     var overlayMaps = {Earthquakes: earthquakes};
 
+    // Define Map Object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
         zoom: 5,
         layers: [outdoorsmap, earthquakes]});
 
+    // Add Map Layers & Data Layer to Map Object
     L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(myMap);
 
+    // Define Variable for Map Legend
     var legend = L.control({position: 'bottomright'});
 
+    // Define Legend Content & Add to Legend
     legend.onAdd = function(myMap) {
         var div = L.DomUtil.create('div', 'info legend'),
         magnitude = ["0-1", "1-2", "2-3", "3-4", "4-5", "5+"],
@@ -139,4 +150,5 @@ function createMap(earthquakes) {
 
         return div};
 
+    // Add Legend to Map Object
     legend.addTo(myMap)}
